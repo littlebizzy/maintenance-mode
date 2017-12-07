@@ -3,15 +3,21 @@
 Plugin Name: Maintenance Mode
 Plugin URI: https://www.littlebizzy.com/plugins/maintenance-mode
 Description: Minimalistic plugin with a simple one-click on/off switch and zero settings to worry about, featuring default WordPress styling without any images.
-Version: 1.0.2
+Version: 1.0.3
 Author: LittleBizzy
 Author URI: https://www.littlebizzy.com
-License: GPL3
+License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: maintenance-mode-littlebizzy
+Prefix: MTNCMD
 */
 
- define('MML_VERSION', '1.0.2');
+// Admin Notices module
+require_once dirname(__FILE__).'/admin-notices.php';
+MTNCMD_Admin_Notices::instance(__FILE__);
+
+// Plugin constants
+ define('MML_VERSION', '1.0.3');
  define('MML_FILE', __FILE__);
  define('MML_DIR', plugin_dir_path(__FILE__));
  define('MML_URL', plugin_dir_url(__FILE__));
@@ -50,11 +56,6 @@ Text Domain: maintenance-mode-littlebizzy
 
  function mml_deactivation() {
     // Deactivation
- }
-
- if ( is_admin() ) {
-  require_once(MML_DIR.'admin-notices.php');
-  MML_Admin_Suggestions::instance();
  }
 
  /**
