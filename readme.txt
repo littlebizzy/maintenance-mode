@@ -180,6 +180,8 @@ Please avoid leaving negative reviews in order to get a feature implemented. Ins
 = 1.0.3 =
 * tested with WP 4.9
 * minor code tweaks
+* updated recommended plugins
+* added rating request
 * added support for `define('DISABLE_NAG_NOTICES', true);`
 
 = 1.0.2 =
