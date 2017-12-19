@@ -1,6 +1,7 @@
 === Maintenance Mode ===
 
 Contributors: littlebizzy
+Donate link: https://www.patreon.com/littlebizzy
 Tags: maintenance, mode, coming, soon, page
 Requires at least: 4.4
 Tested up to: 4.9
