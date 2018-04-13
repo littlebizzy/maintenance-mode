@@ -47,7 +47,7 @@ if (false !== \LittleBizzy\MaintenanceMode\Admin_Notices_MS::instance(__FILE__))
    // If content is not set, set the default content.
   //  $content = get_option('mml-content');
   //  if (empty($content)) :
-       $content = "<h1>Sorry, this site under maintenance.</h1><p>Our Website needs some repairs. Wait a bit and in time we will return to work.</p>";
+       $content = "<h1>Sorry! We will be back online as soon as possible.</h1><p>Our website is undergoing some necessary repairs and updates. Please check back shortly, and sincere apologies for any inconvenience.</p>";
        /**
        * f you are trying to ensure that a given option is created,
        * use update_option() instead, which bypasses the option name check
