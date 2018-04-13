@@ -182,9 +182,9 @@ if (false !== \LittleBizzy\MaintenanceMode\Admin_Notices_MS::instance(__FILE__))
    {
        $mode = get_option('mml-mode');
        if ($mode == 'cs') {
-         $content = "<h1>Coming soon!</h1><p>Our Website will open soon. Thank you for waiting.</p>";
+         $content = "<h1>Coming soon!</h1><p>Our website will launch very soon. Please check back shortly!</p>";
        }else {
-         $content = "<h1>Sorry, this site under maintenance.</h1><p>Our Website needs some repairs. Wait a bit and in time we will return to work.</p>";
+         $content = "<h1>Sorry! We will be back online as soon as possible.</h1><p>Our website is undergoing some necessary repairs and updates. Please check back shortly, and sincere apologies for any inconvenience.</p>";
        }
        $content = apply_filters('the_content', $content);
        $content = apply_filters('mml_content', $content);
