@@ -182,6 +182,7 @@ Please avoid leaving negative reviews in order to get a feature implemented. Ins
 = 1.0.4 =
 * added warning for Multisite installations
 * updated recommended plugins
+* changed language on splash page
 
 = 1.0.3 =
 * tested with WP 4.9
