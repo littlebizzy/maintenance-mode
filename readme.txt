@@ -7,7 +7,7 @@ Requires at least: 4.4
 Tested up to: 4.9
 Requires PHP: 7.0
 Multisite support: No
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Prefix: MTNCMD
@@ -179,13 +179,17 @@ Please avoid leaving negative reviews in order to get a feature implemented. Ins
 
 == Changelog ==
 
+= 1.0.6 =
+* tweaked splash page language
+* updated plugin meta
+
 = 1.0.5 =
-* fixed last splash language update
+* fixed splash page language error
 
 = 1.0.4 =
+* tweaked splash page language
 * added warning for Multisite installations
 * updated recommended plugins
-* changed language on splash page
 
 = 1.0.3 =
 * tested with WP 4.9
