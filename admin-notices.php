@@ -20,8 +20,9 @@ final class MTNCMD_Admin_Notices {
 	 */
 	private $days_before_display_rate_us = 3; // 3 days delay
 	private $days_dismissing_rate_us = 270; // 9 months reappear
-	private $rate_us_url = 'https://wordpress.org/support/plugin/maintenance-mode-littlebizzy/reviews/#new-post';
-	private $rate_us_message = 'Thanks for using <strong>%plugin%</strong>. Please support our free work by rating this plugin with 5 stars on WordPress.org. <a href="%url%" target="_blank">Click here to rate us.</a>';
+	private $rate_us_url = 'https://wordpress.org/support/plugin/maintenance-mode/reviews/#new-post';
+	private $rate_us_url2 = 'https://www.facebook.com/groups/littlebizzy/';
+	private $rate_us_message = 'Thanks for using <strong>%plugin%</strong>. Please support our free work by rating this plugin with 5 stars on WordPress.org. <a href="%url%" target="_blank">Click here to rate us.</a><br><br>You may also join our free <a href="%url2%" target="_blank">Facebook group</a> to post any questions or comments!';
 
 
 
@@ -284,9 +285,35 @@ final class MTNCMD_Admin_Notices {
 
 		?><div class="<?php echo esc_attr($this->prefix); ?>-dismiss-rate-us notice notice-success is-dismissible" data-nonce="<?php echo esc_attr(wp_create_nonce($this->prefix.'-dismiss-rate-us')); ?>">
 
-			<p><?php echo str_replace('%url%', $this->rate_us_url, str_replace('%plugin%', $plugin_data['Name'], $this->rate_us_message)); ?></p>
+			<p><?php echo $this->replace_message_var('rate_us_url', 'url', str_replace('%plugin%', $plugin_data['Name'], $this->rate_us_message)); ?></p>
 
 		</div><?php
+	}
+
+
+
+	/**
+	 * Replace until 10 properties from this object with their values
+	 */
+	private function replace_message_var($property, $var, $message, $variations = 10) {
+
+		// Allow n variations
+		for ($index = 1; $index <= $variations; $index++) {
+
+			// Prepare suffix
+			$suffix = (1 == $index)? '' : $index;
+
+			// Check property
+			$name = $property.$suffix;
+			if (!empty($this->{$name})) {
+
+				// Replace message vars
+				$message = str_replace('%'.$var.$suffix.'%', $this->{$name}, $message);
+			}
+		}
+
+		// Done
+		return $message;
 	}
 
 
