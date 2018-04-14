@@ -18,12 +18,16 @@ Minimalistic plugin with a simple one-click on/off switch and zero settings to w
 
 Minimalistic plugin with a simple one-click on/off switch and zero settings to worry about, featuring default WordPress styling without any images.
 
-* [**Join our FREE Facebook group for support!**](https://www.facebook.com/groups/littlebizzy/)
+* [**Join our FREE Facebook group for support**](https://www.facebook.com/groups/littlebizzy/)
+* [**Want to help us out with a 5-star review? Thank you!**](https://wordpress.org/support/plugin/cf-littlebizzy/reviews/?rate=5#new-post)
 * [Plugin Homepage](https://www.littlebizzy.com/plugins/maintenance-mode)
 * [Plugin GitHub](https://github.com/littlebizzy/maintenance-mode)
+
+Our related OSS projects:
+
 * [SlickStack (LEMP stack automation)](https://slickstack.io)
-* [Starter (lighting-fast custom WP themes)](https://starter.littlebizzy.com)
 * [WP Lite boilerplate](https://wplite.org)
+* [Starter Theme](https://starter.littlebizzy.com)
 
 #### The Long Version ####
 
@@ -42,6 +46,12 @@ For versions 1.0.X no WYSIWIG or customization of the messages, we may add in ne
 #### Compatibility ####
 
 This plugin has been designed for use on LEMP (Nginx) web servers with PHP 7.0 and MySQL 5.7 to achieve best performance. All of our plugins are meant for single site WordPress installations only; for both performance and security reasons, we highly recommend against using WordPress Multisite for the vast majority of projects.
+
+#### Defined Constants ####
+
+The following defined constants are supported by this plugin:
+
+* `define('DISABLE_NAG_NOTICES', true);`
 
 #### Plugin Features ####
 
