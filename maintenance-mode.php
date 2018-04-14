@@ -3,7 +3,7 @@
 Plugin Name: Maintenance Mode
 Plugin URI: https://www.littlebizzy.com/plugins/maintenance-mode
 Description: Minimalistic plugin with a simple one-click on/off switch and zero settings to worry about, featuring default WordPress styling without any images.
-Version: 1.0.5
+Version: 1.0.6
 Author: LittleBizzy
 Author URI: https://www.littlebizzy.com
 License: GPLv3
@@ -26,7 +26,7 @@ if (false !== \LittleBizzy\MaintenanceMode\Admin_Notices_MS::instance(__FILE__))
 }
 
 // Plugin constants
- define('MML_VERSION', '1.0.4');
+ define('MML_VERSION', '1.0.6');
  define('MML_FILE', __FILE__);
  define('MML_DIR', plugin_dir_path(__FILE__));
  define('MML_URL', plugin_dir_url(__FILE__));
@@ -47,7 +47,7 @@ if (false !== \LittleBizzy\MaintenanceMode\Admin_Notices_MS::instance(__FILE__))
    // If content is not set, set the default content.
   //  $content = get_option('mml-content');
   //  if (empty($content)) :
-       $content = "<h1>Sorry! We will be back online as soon as possible.</h1><p>Our website is undergoing some necessary repairs and updates. Please check back shortly, and sincere apologies for any inconvenience.</p>";
+       $content = "<h1>We'll be back online as soon as possible.</h1><p>Our website is undergoing some important maintenance updates at the moment. Please check back shortly, and sincere apologies for any inconvenience. Thank you!</p><p><a id='jslink' style='display:none;' href='javascript:window.location.reload(true)'>Refresh page</a><noscript><a href='.'>Refresh page</a></noscript></p><script>document.getElementById('jslink').style.display='inline-block';</script>";
        /**
        * f you are trying to ensure that a given option is created,
        * use update_option() instead, which bypasses the option name check
@@ -184,7 +184,7 @@ if (false !== \LittleBizzy\MaintenanceMode\Admin_Notices_MS::instance(__FILE__))
        if ($mode == 'cs') {
          $content = "<h1>Coming soon!</h1><p>Our website will launch very soon. Please check back shortly!</p>";
        }else {
-         $content = "<h1>Sorry! We will be back online as soon as possible.</h1><p>Our website is undergoing some necessary repairs and updates. Please check back shortly, and sincere apologies for any inconvenience.</p>";
+        $content = "<h1>We'll be back online as soon as possible.</h1><p>Our website is undergoing some important maintenance updates at the moment. Please check back shortly, and sincere apologies for any inconvenience. Thank you!</p><p><a id='jslink' style='display:none;' href='javascript:window.location.reload(true)'>Refresh page</a><noscript><a href='.'>Refresh page</a></noscript></p><script>document.getElementById('jslink').style.display='inline-block';</script>";
        }
        $content = apply_filters('the_content', $content);
        $content = apply_filters('mml_content', $content);
