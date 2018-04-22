@@ -190,6 +190,7 @@ Please avoid leaving negative reviews in order to get a feature implemented. Ins
 == Changelog ==
 
 = 1.0.6 =
+* added "Refresh" hyperlink to splash page (works with or without javascript enabled)
 * tweaked splash page language
 * updated plugin meta
 
