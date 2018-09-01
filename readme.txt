@@ -7,7 +7,7 @@ Requires at least: 4.4
 Tested up to: 4.9
 Requires PHP: 7.0
 Multisite support: No
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Prefix: MTNCMD
@@ -189,6 +189,9 @@ Please avoid leaving negative reviews in order to get a feature implemented. Ins
 
 == Changelog ==
 
+= 1.0.7 =
+* updated plugin meta
+
 = 1.0.6 =
 * added "Refresh" hyperlink to splash page (works with or without javascript enabled)
 * tweaked splash page language
@@ -204,10 +207,10 @@ Please avoid leaving negative reviews in order to get a feature implemented. Ins
 
 = 1.0.3 =
 * tested with WP 4.9
-* minor code tweaks
+* added support for `DISABLE_NAG_NOTICES`
 * updated recommended plugins
 * added rating request notice
-* added support for `define('DISABLE_NAG_NOTICES', true);`
+* optimized plugin code
 
 = 1.0.2 =
 * added recommended plugins notice
@@ -215,7 +218,8 @@ Please avoid leaving negative reviews in order to get a feature implemented. Ins
 = 1.0.1 =
 * tweaked settings page URI for simplicity
 * tweaked preview link URI to avoid query string conflicts
-* minor code tweaks
+* optimized plugin code
 
 = 1.0.0 =
 * initial release
+* tested with PHP 7.0
