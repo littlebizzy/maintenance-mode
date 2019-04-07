@@ -19,6 +19,15 @@ class Factory extends Helpers\Factory {
 
 
 	/**
+	 * Core Maintenance object
+	 */
+	protected function createMaintenance() {
+		return Maintenance::instance($this->plugin);
+	}
+
+
+
+	/**
 	 * Admin object
 	 */
 	protected function createAdmin() {
@@ -26,11 +35,12 @@ class Factory extends Helpers\Factory {
 	}
 
 
+
 	/**
-	 * Maintenance object
+	 * Display object
 	 */
-	protected function createMaintenance() {
-		return Front\Maintenance::instance($this->plugin);
+	protected function createDisplay() {
+		return Front\Display::instance($this->plugin);
 	}
 
 

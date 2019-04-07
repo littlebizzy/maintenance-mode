@@ -46,7 +46,7 @@ final class Admin extends Helpers\Singleton {
 
 
 	/**
-	 * Display menu
+	 * Add the Settings menu page
 	 */
 	public function menu() {
 		add_submenu_page('options-general.php', 'Maintenance Mode', 'Maintenance Mode', self::CAPABILITY, 'maintenance', [$this, 'page']);
@@ -64,9 +64,15 @@ final class Admin extends Helpers\Singleton {
 			die;
 		}
 
-		// Prepare options
-		$mode = get_option('mml-mode');
-		$enabled = get_option('mml-enabled');
+		// Core object
+		$maintenance = $this->plugin->factory->maintenance;
+
+		// Maintenance data
+		$mode = $maintenance->mode();
+		$enabled = $maintenance->enabled();
+
+		// Mode forced by constant
+		$modeDisabled = (false !== $maintenance->modeByConstant());
 
 		// Plugin admin page
 		?><div class="wrap">
@@ -85,10 +91,8 @@ final class Admin extends Helpers\Singleton {
 							<label for="mml_enabled"><?php echo 'Enabled'; ?></label>
 						</th>
 						<td>
-							<input type="checkbox" id="mml_enabled" name="mml-enabled" value="1" <?php checked($enabled, 1); ?>>
-							<?php if ($enabled) : ?>
-								<p class="description"><?php echo "Maintenance Mode is currently active."; ?></p>
-							<?php endif; ?>
+							<input type="checkbox" <?php if ($maintenance->enabledByConstant()) echo 'disabled'; ?> id="mml_enabled" name="mml-enabled" value="1" <?php checked($enabled); ?>>
+							<?php if ($enabled) : ?><p class="description" style="padding-top: 10px;">Maintenance Mode is currently active.</p><?php endif; ?>
 						</td>
 					</tr>
 
@@ -96,12 +100,11 @@ final class Admin extends Helpers\Singleton {
 						<th scope="row"><?php echo 'Mode'; ?></th>
 						<td>
 							<label>
-								<input name="mml-mode" type="radio" value="default" <?php checked('default' == $mode, 1); ?>>
-								<?php echo 'Maintenance Mode'; ?> (<?php echo 'Default'; ?>)
+								<input type="radio" <?php if ($modeDisabled) echo 'disabled'; ?> name="mml-mode" value="default" <?php checked('default' == $mode || 'maintenance' == $mode); ?>>Maintenance Mode (Default)
 							</label>
+							&nbsp; &nbsp;
 							<label>
-								<input name="mml-mode" type="radio" value="cs" <?php checked('cs' == $mode, 1); ?>>
-								<?php echo 'Coming Soon Page'; ?>
+								<input type="radio" <?php if ($modeDisabled) echo 'disabled'; ?> name="mml-mode" value="cs" <?php checked('cs' == $mode || 'comingsoon' == $mode); ?>>Coming Soon Page
 							</label>
 						</td>
 					</tr>
