@@ -39,7 +39,7 @@ class Maintenance extends Helpers\Singleton {
 	 * Check if forced by constant
 	 */
 	public function enabledByConstant() {
-		return $this->plugin->enabled('MAINTENANCE_MODE');
+		return $this->plugin->enabled('MAINTENANCE_MODE', false);
 	}
 
 
