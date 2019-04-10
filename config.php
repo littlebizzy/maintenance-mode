@@ -5,6 +5,31 @@ return [
 
 
 	/**
+	 * Plugin options
+	 */
+	'maintenance-mode' => [
+
+		/**
+		 * Title of the page
+		 * Variable %blogname% will be replaced with the blog name
+		 */
+		'title' => '%blogname% - Website Under Maintenance',
+
+		/**
+		 * Content of the page for the coming soon mode
+		 */
+		'coming-soon' => "<h1>Coming soon!</h1><p>Our website will launch very soon. Please check back shortly!</p>",
+
+		/**
+		 * Content of the page for the default maintenance mode
+		 */
+		'default-maintenance' =>"<h1>We'll be back online as soon as possible.</h1><p>Our website is undergoing some important maintenance updates at the moment. Please check back shortly, and sincere apologies for any inconvenience. Thank you!</p><p><a id='jslink' style='display:none;' href='javascript:window.location.reload(true)'>Refresh page</a><noscript><a href='.'>Refresh page</a></noscript></p><script>document.getElementById('jslink').style.display='inline-block';</script>",
+
+	], // End of Maintenance Mode options
+
+
+
+	/**
 	 * Boot check PHP configuration
 	 */
 	'boot-check-php' => [
