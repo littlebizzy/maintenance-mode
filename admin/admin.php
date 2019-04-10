@@ -17,13 +17,6 @@ final class Admin extends Helpers\Singleton {
 
 
 	/**
-	 * Needed user capability
-	 */
-	const CAPABILITY = 'delete_plugins';
-
-
-
-	/**
 	 * Pseudo constructor
 	 */
 	protected function onConstruct() {
@@ -49,7 +42,7 @@ final class Admin extends Helpers\Singleton {
 	 * Add the Settings menu page
 	 */
 	public function menu() {
-		add_submenu_page('options-general.php', 'Maintenance Mode', 'Maintenance Mode', self::CAPABILITY, 'maintenance', [$this, 'page']);
+		add_submenu_page('options-general.php', 'Maintenance Mode', 'Maintenance Mode', $this->plugin->capability, 'maintenance', [$this, 'page']);
 	}
 
 
@@ -60,7 +53,7 @@ final class Admin extends Helpers\Singleton {
 	public function page() {
 
 		// Exit on unauthorized access
-		if (!current_user_can(self::CAPABILITY)) {
+		if (!current_user_can($this->plugin->capability)) {
 			die;
 		}
 
