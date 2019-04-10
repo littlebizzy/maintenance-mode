@@ -57,7 +57,7 @@ final class Admin extends Helpers\Singleton {
 			die;
 		}
 
-		// Core object
+		// Core maintenance object
 		$maintenance = $this->plugin->factory->maintenance;
 
 		// Maintenance data
