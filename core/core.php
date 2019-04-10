@@ -28,11 +28,20 @@ final class Core extends Helpers\Singleton {
 	 */
 	protected function onConstruct() {
 
+
+		/* Plugin setup */
+
 		// Factory object
 		$this->plugin->factory = new Factory($this->plugin);
 
+		// Add registrar handler
+		$this->plugin->factory->registrar->setHandler($this);
+
 		// Set admin capability
 		$this->plugin->capability = self::CAPABILITY;
+
+
+		/* Context check */
 
 		// Check admin context
 		if ($this->plugin->context()->admin()) {
@@ -42,6 +51,16 @@ final class Core extends Helpers\Singleton {
 		} elseif ($this->plugin->context()->front()) {
 			$this->plugin->factory->display();
 		}
+	}
+
+
+
+	/**
+	 * Delete plugin options
+	 */
+	public static function onUninstall() {
+		delete_option('mml_enabled');
+		delete_option('mml_mode');
 	}
 
 
