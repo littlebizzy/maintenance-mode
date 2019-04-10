@@ -101,7 +101,7 @@ class Display extends Helpers\Singleton {
 			$content = $this->config['maintenance-mode']['coming-soon'];
 
 		// Default maintenance mode
-		} elseif ('default' == $this->mode || 'maintenance' == $this->mode) {
+		} else {
 			$content = $this->config['maintenance-mode']['default-maintenance'];
 		}
 
