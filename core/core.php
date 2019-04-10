@@ -17,12 +17,22 @@ final class Core extends Helpers\Singleton {
 
 
 	/**
+	 * Needed admin capability
+	 */
+	const CAPABILITY = 'delete_plugins';
+
+
+
+	/**
 	 * Pseudo constructor
 	 */
 	protected function onConstruct() {
 
 		// Factory object
 		$this->plugin->factory = new Factory($this->plugin);
+
+		// Set admin capability
+		$this->plugin->capability = self::CAPABILITY;
 
 		// Check admin context
 		if ($this->plugin->context()->admin()) {
