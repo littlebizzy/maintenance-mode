@@ -27,9 +27,16 @@ final class Core extends Helpers\Singleton {
 	 * Pseudo constructor
 	 */
 	protected function onConstruct() {
+		$this->setup();
+		$this->context();
+	}
 
 
-		/* Plugin setup */
+
+	/**
+	 * Setup plugin objects
+	 */
+	private function setup() {
 
 		// Factory object
 		$this->plugin->factory = new Factory($this->plugin);
@@ -39,9 +46,14 @@ final class Core extends Helpers\Singleton {
 
 		// Set admin capability
 		$this->plugin->capability = self::CAPABILITY;
+	}
 
 
-		/* Context check */
+
+	/**
+	 * Check execution context
+	 */
+	private function context() {
 
 		// Check admin context
 		if ($this->plugin->context()->admin()) {
