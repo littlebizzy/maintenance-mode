@@ -30,7 +30,7 @@ final class Core extends Helpers\Singleton {
 
 		// Front area display
 		} elseif ($this->plugin->context()->front()) {
-			$this->plugin->factory->maintenance();
+			$this->plugin->factory->display();
 		}
 	}
 
