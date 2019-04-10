@@ -37,6 +37,15 @@ class Factory extends Helpers\Factory {
 
 
 	/**
+	 * Toolbar object
+	 */
+	protected function createToolbar() {
+		return Admin\Toolbar::instance($this->plugin);
+	}
+
+
+
+	/**
 	 * Display object
 	 */
 	protected function createDisplay() {
