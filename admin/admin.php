@@ -93,7 +93,7 @@ final class Admin extends Helpers\Singleton {
 						<th scope="row"><?php echo 'Mode'; ?></th>
 						<td>
 							<label>
-								<input type="radio" <?php if ($modeDisabled) echo 'disabled'; ?> name="mml-mode" value="default" <?php checked('default' == $mode || 'maintenance' == $mode); ?>>Maintenance Mode (Default)
+								<input type="radio" <?php if ($modeDisabled) echo 'disabled'; ?> name="mml-mode" value="default" <?php checked(empty($mode) || 'default' == $mode || 'maintenance' == $mode); ?>>Maintenance Mode (Default)
 							</label>
 							&nbsp; &nbsp;
 							<label>
