@@ -72,8 +72,8 @@ final class Core extends Helpers\Singleton {
 	 * Delete plugin options
 	 */
 	public static function onUninstall() {
-		delete_option('mml_enabled');
-		delete_option('mml_mode');
+		delete_option('mml-enabled');
+		delete_option('mml-mode');
 	}
 
 
