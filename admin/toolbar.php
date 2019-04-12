@@ -55,10 +55,10 @@ final class Toolbar extends Helpers\Singleton {
 			$menuItems[] = [
 				'id'     => $this->plugin->prefix.'-menu',
 				'parent' => 'top-secondary',
-				'title'  => '<strong style="color: #ca4a1f;">Maintenance Enabled</strong>',
+				'title'  => '<span style="color:#fff;background:#d63438;">Maintenance: ON</span>',
 				'href'   => admin_url('options-general.php?page=maintenance'),
 				'meta'   => [
-					'title' => 'Maintenance Mode Enabled',
+					'title' => '',
 					'tabindex' => -1,
 				],
 			];
@@ -69,10 +69,10 @@ final class Toolbar extends Helpers\Singleton {
 			$menuItems[] = [
 				'id'     => $this->plugin->prefix.'-menu',
 				'parent' => 'top-secondary',
-				'title'  => 'Maintenance Disabled',
+				'title'  => 'Maintenance: OFF',
 				'href'   => admin_url('options-general.php?page=maintenance'),
 				'meta'   => [
-					'title' => 'Maintenance Mode Disabled',
+					'title' => '',
 					'tabindex' => -1,
 				],
 			];
