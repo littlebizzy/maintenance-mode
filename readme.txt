@@ -4,10 +4,10 @@ Contributors: littlebizzy
 Donate link: https://www.patreon.com/littlebizzy
 Tags: maintenance, mode, coming, soon, page
 Requires at least: 4.4
-Tested up to: 4.9
+Tested up to: 5.1
 Requires PHP: 7.2
 Multisite support: No
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Prefix: MTNCMD
@@ -49,6 +49,18 @@ Visit the settings page to enable maintenance mode or preview how it will look.
     `/wp-admin/options-general.php?page=maintenance`
 
 == Changelog ==
+
+= 1.1.1 =
+* tweaked language in drop-down shortcut
+* tweaked CSS (colors) in drop-down shortcut
+* non-dismissable admin notice when Maintenance Mode "enabled"
+* hard-coded 503 HTTP header when Maintenance Mode "enabled" regardless of mode
+* added custom nonce and referer checks to avoid other plugins inferences
+* added previous missing validation of user permissions at the update moment
+* now saves both options with the autoload value off
+* selectively avoids to save the values that are defined by constants
+* shows a green admin notice message when any value is saved
+* clears the current cache using the wp_cache_flush function if available
 
 = 1.1.0 =
 * PBP v1.2.0
