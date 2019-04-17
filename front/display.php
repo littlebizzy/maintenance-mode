@@ -120,8 +120,8 @@ class Display extends Helpers\Singleton {
 	 */
 	private function statusCode() {
 
-		// Decide response code
-		$statusCode = ('cs' == $this->mode || 'comingsoon' == $this->mode)? 200 : 503;
+		// Always Service Unavailable
+		$statusCode = 503;
 
 		// Done
 		return $statusCode;
