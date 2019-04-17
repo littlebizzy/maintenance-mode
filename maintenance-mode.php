@@ -3,7 +3,7 @@
 Plugin Name: Maintenance Mode
 Plugin URI: https://www.littlebizzy.com/plugins/maintenance-mode
 Description: Minimalistic plugin with a simple one-click on/off switch and zero settings to worry about, featuring default WordPress styling without any images.
-Version: 1.1.0
+Version: 1.1.1
 Author: LittleBizzy
 Author URI: https://www.littlebizzy.com
 License: GPLv3
@@ -20,7 +20,7 @@ namespace LittleBizzy\MaintenanceMode;
 // Plugin constants
 const FILE = __FILE__;
 const PREFIX = 'mtncmd';
-const VERSION = '1.1.0';
+const VERSION = '1.1.1';
 const REPO = 'littlebizzy/maintenance-mode';
 
 // Boot
