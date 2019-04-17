@@ -46,6 +46,15 @@ class Factory extends Helpers\Factory {
 
 
 	/**
+	 * Notice object
+	 */
+	protected function createNotice() {
+		return Admin\Notice::instance($this->plugin);
+	}
+
+
+
+	/**
 	 * Display object
 	 */
 	protected function createDisplay() {

@@ -58,6 +58,7 @@ final class Core extends Helpers\Singleton {
 		// Check admin context
 		if ($this->plugin->context()->admin()) {
 			$this->plugin->factory->admin();
+			$this->plugin->factory->notice();
 			$this->plugin->factory->toolbar();
 
 		// Front area display
