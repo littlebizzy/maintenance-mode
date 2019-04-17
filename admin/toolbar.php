@@ -20,7 +20,7 @@ final class Toolbar extends Helpers\Singleton {
 	 * Pseudo constructor
 	 */
 	protected function onConstruct() {
-		add_action('admin_init', [$this, 'init']);
+		add_action('init', [$this, 'init']);
 	}
 
 

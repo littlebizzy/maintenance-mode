@@ -63,6 +63,7 @@ final class Core extends Helpers\Singleton {
 		// Front area display
 		} elseif ($this->plugin->context()->front()) {
 			$this->plugin->factory->display();
+			$this->plugin->factory->toolbar();
 		}
 	}
 
