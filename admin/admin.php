@@ -19,6 +19,7 @@ final class Admin extends Helpers\Singleton {
 	/**
 	 * Form helpers
 	 */
+	private $updated;
 	private $paramNonce;
 	private $paramAction;
 	private $errorNonce;
@@ -64,17 +65,27 @@ final class Admin extends Helpers\Singleton {
 			// Correct
 			} else {
 
-				// Prepare values
-				$inputEnabled = empty($_POST['mml-enabled'])? 0 : 1;
-				$inputMode = (empty($_POST['mml-mode']) || !in_array($_POST['mml-mode'], ['default', 'cs']))? 'default' : $_POST['mml-mode'];
+				// Core maintenance object
+				$maintenance = $this->plugin->factory->maintenance;
 
-				// Update non-autoload options
-				update_option('mml-enabled', $inputEnabled, false);
-				update_option('mml-mode', $inputMode, false);
+				// Check enabled value
+				if (!$maintenance->enabledByConstant()) {
+					$inputEnabled = empty($_POST['mml-enabled'])? 0 : 1;
+					update_option('mml-enabled', $inputEnabled, false);
+				}
+
+				// Check mode value
+				if (!$maintenance->modeByConstant()) {
+					$inputMode = (empty($_POST['mml-mode']) || !in_array($_POST['mml-mode'], ['default', 'cs']))? 'default' : $_POST['mml-mode'];
+					update_option('mml-mode', $inputMode, false);
+				}
 
 				// Flush the cache
-				if (function_exists('wp_cache_flush')) {
-					wp_cache_flush();
+				if (isset($inputEnabled) || isset($inputMode)) {
+					$this->updated = true;
+					if (function_exists('wp_cache_flush')) {
+						wp_cache_flush();
+					}
 				}
 			}
 		}
@@ -125,7 +136,8 @@ final class Admin extends Helpers\Singleton {
 
 			<h2><?php echo 'Maintenance Mode'; ?></h2>
 
-			<?php if (!empty($this->errorNonce)) : ?><div class="notice notice-error"><p>Security verification error, please try to submit the form again.</p></div>
+			<?php if (!empty($this->updated)) : ?><div class="notice notice-success is-dismissible"><p>Maintenance mode settings successfully updated.</p></div>
+			<?php elseif (!empty($this->errorNonce)) : ?><div class="notice notice-error"><p>Security verification error, please try to submit the form again.</p></div>
 			<?php elseif (!empty($this->errorReferer)) : ?><div class="notice notice-error"><p>Security referer error, please try to submit the form again.</p></div><?php endif; ?>
 
 			<form method="post" action="options-general.php?page=maintenance">
