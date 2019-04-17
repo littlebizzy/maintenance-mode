@@ -17,23 +17,67 @@ final class Admin extends Helpers\Singleton {
 
 
 	/**
+	 * Form helpers
+	 */
+	private $paramNonce;
+	private $paramAction;
+	private $errorNonce;
+	private $errorReferer;
+
+
+
+	/**
 	 * Pseudo constructor
 	 */
 	protected function onConstruct() {
-		add_action('admin_init', [$this, 'init']);
+		add_action('admin_init', [$this, 'init'], 0);
 		add_action('admin_menu', [$this, 'menu']);
 	}
 
 
 
 	/**
-	 * Admin initialization
+	 * Checks the form submit at the admin initialization
 	 */
 	public function init() {
 
-		// Previous plugin version compatibility
-		register_setting('mml', 'mml-enabled');
-		register_setting('mml', 'mml-mode');
+		// Avoid unauthorized updates
+		if (!current_user_can($this->plugin->capability)) {
+			return;
+		}
+
+		// Prepare form param
+		$this->paramNonce = $this->plugin->prefix.'-nonce';
+		$this->paramAction = $this->plugin->file.'-update';
+
+		// Check form submit
+		if (isset($_POST[$this->paramNonce])) {
+
+			// Check nonce
+			if (!wp_verify_nonce($_POST[$this->paramNonce], $this->paramAction)) {
+				$this->errorNonce = true;
+
+			// Check referer
+			} elseif (!check_admin_referer($this->paramAction, $this->paramNonce)) {
+				$this->errorReferer = true;
+
+			// Correct
+			} else {
+
+				// Prepare values
+				$inputEnabled = empty($_POST['mml-enabled'])? 0 : 1;
+				$inputMode = (empty($_POST['mml-mode']) || !in_array($_POST['mml-mode'], ['default', 'cs']))? 'default' : $_POST['mml-mode'];
+
+				// Update non-autoload options
+				update_option('mml-enabled', $inputEnabled, false);
+				update_option('mml-mode', $inputMode, false);
+
+				// Flush the cache
+				if (function_exists('wp_cache_flush')) {
+					wp_cache_flush();
+				}
+			}
+		}
 	}
 
 
@@ -52,10 +96,16 @@ final class Admin extends Helpers\Singleton {
 	 */
 	public function page() {
 
+
+		/* Validation */
+
 		// Exit on unauthorized access
 		if (!current_user_can($this->plugin->capability)) {
 			die;
 		}
+
+
+		/* Read */
 
 		// Core maintenance object
 		$maintenance = $this->plugin->factory->maintenance;
@@ -67,15 +117,20 @@ final class Admin extends Helpers\Singleton {
 		// Mode forced by constant
 		$modeDisabled = (false !== $maintenance->modeByConstant());
 
+
+		/* Output */
+
 		// Plugin admin page
 		?><div class="wrap">
 
 			<h2><?php echo 'Maintenance Mode'; ?></h2>
 
-			<form method="post" action="options.php">
+			<?php if (!empty($this->errorNonce)) : ?><div class="notice notice-error"><p>Security verification error, please try to submit the form again.</p></div>
+			<?php elseif (!empty($this->errorReferer)) : ?><div class="notice notice-error"><p>Security referer error, please try to submit the form again.</p></div><?php endif; ?>
 
-				<?php settings_fields('mml'); ?>
-				<?php do_settings_sections('mml'); ?>
+			<form method="post" action="options-general.php?page=maintenance">
+
+				<?php wp_nonce_field($this->paramAction, $this->paramNonce); ?>
 
 				<table class="form-table">
 
