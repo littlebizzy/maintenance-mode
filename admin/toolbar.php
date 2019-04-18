@@ -55,7 +55,7 @@ final class Toolbar extends Helpers\Singleton {
 			$menuItems[] = [
 				'id'     => $this->plugin->prefix.'-menu',
 				'parent' => 'top-secondary',
-				'title'  => '<span style="color: #fff; background: #dc3232; padding: 0 12px 0 11px; display: inline-block;">Maintenance: ON</span>',
+				'title'  => '<span style="display: inline-block; color: #fff; background: #dc3232; margin-left:-7px; margin-right:-8px; padding: 0 8px 0 7px;">Maintenance: ON</span>',
 				'href'   => admin_url('options-general.php?page=maintenance'),
 				'meta'   => [
 					'title' => '',
