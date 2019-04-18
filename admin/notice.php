@@ -38,7 +38,7 @@ final class Notice extends Helpers\Singleton {
 		// Notice
 		?><div class="notice notice-error">
 
-			<p><strong>Notice:</strong> Maintenance Mode is currently enabled.</p>
+			<p><strong>Notice:</strong> Maintenance Mode is currently enabled, and the frontend is inaccessible to unprivileged users. <a href="../wp-admin/options-general.php?page=maintenance">View Settings</a></p>
 
 		</div><?php
 	}
