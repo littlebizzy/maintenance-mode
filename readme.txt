@@ -60,7 +60,7 @@ Visit the settings page to enable maintenance mode or preview how it will look.
 * now saves both options with the autoload value off
 * selectively avoids to save the values that are defined by constants
 * shows a green admin notice message when any value is saved
-* clears the current cache using the wp_cache_flush function if available
+* clears the object cache on save using the `wp_cache_flush` function if available
 
 = 1.1.0 =
 * PBP v1.2.0
