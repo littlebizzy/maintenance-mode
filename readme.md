@@ -3,7 +3,7 @@
 Minimalistic plugin with a simple one-click on/off switch and zero settings to worry about, featuring default WordPress styling without any images.
 
 * [Plugin Homepage](https://www.littlebizzy.com/plugins/maintenance-mode)
-* [Download Latest Version (ZIP)](https://github.com/littlebizzy/maintenance-mode/archive/1.1.0.zip)
+* [Download Latest Version (ZIP)](https://github.com/littlebizzy/maintenance-mode/archive/1.1.1.zip)
 * [**Become A LittleBizzy.com Member Today!**](https://www.littlebizzy.com/members)
 
 ### Defined Constants
